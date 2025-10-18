@@ -1,0 +1,166 @@
+/* Variáveis de Cores */
+:root {
+    --roxo-magenta: #8A2BE2; /* Cor principal, Roxo Azulado para ser vibrante */
+    --roxo-claro: #9370DB;   /* Tom mais claro para hover */
+    --preto: #1a1a1a;
+    --branco: #ffffff;
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--preto);
+    color: var(--branco);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Layout Principal */
+.portfolio {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--roxo-magenta);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px; /* Ajuste conforme o tamanho da sua logo */
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5em;
+    font-weight: bold; /* Arial Bold */
+    color: var(--roxo-magenta);
+}
+
+nav a {
+    color: var(--branco);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: normal; /* Arial padrão */
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--roxo-magenta);
+}
+
+/* Seção Hero/Sobre */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 0;
+    gap: 40px;
+}
+
+.hero-content {
+    max-width: 60%;
+}
+
+.main-title {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: var(--branco);
+    font-weight: bold; /* Arial Bold */
+}
+
+.subtitle {
+    font-size: 1.8em;
+    color: var(--roxo-magenta);
+    margin-bottom: 20px;
+    font-weight: normal; /* Arial padrão */
+}
+
+.description {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    font-weight: normal; /* Arial padrão */
+}
+
+/* Imagem de Perfil */
+.hero-image {
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-photo {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%; /* Foto redonda */
+    border: 5px solid var(--roxo-magenta);
+    box-shadow: 0 0 20px var(--roxo-magenta);
+}
+
+/* Botão Principal */
+.btn-primary {
+    background-color: var(--roxo-magenta);
+    color: var(--branco);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold; /* Arial Bold */
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--roxo-claro);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+    nav {
+        margin-top: 15px;
+    }
+    nav a {
+        margin: 0 10px;
+    }
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 50px 0;
+    }
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero-image {
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+    .profile-photo {
+        width: 200px;
+        height: 200px;
+    }
+    .main-title {
+        font-size: 2.5em;
+    }
+    .subtitle {
+        font-size: 1.5em;
+    }
+}
