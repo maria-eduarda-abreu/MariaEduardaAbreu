@@ -8,7 +8,7 @@ createApp({
         // Dados da Maria Eduarda, definidos como reativos usando ref()
         const nome = ref('Maria Eduarda Abreu');
         const cargo = ref('Desenvolvedora de Software Fullstack Jr.');
-        const descricao = ref('Apaixonada por criar soluções inovadoras e aprender novas tecnologias. Minha experiência abrange desde o front-end reativo com frameworks (como o próprio Vue.js) até o back-end, focando em performance e arquitetura escalável.');
+        const descricao = ref('Sou estudante do 3 semetre de Análise e Desenvolvimento de Sistemas na FIAP. Meu foco é criar soluções digitais que unam design, funcionalidade e experiência do usuáriopara gerar valor real aos clientes.');
 
         // Se você quiser adicionar lógica, como um método:
         const handleClickProjetos = () => {

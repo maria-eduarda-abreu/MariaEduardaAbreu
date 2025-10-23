@@ -1,9 +1,16 @@
+@font-face {
+    font-family: 'corpta';
+    src: url('docs/fonts/corpta.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+}
+
 /* Variáveis de Cores */
 :root {
     --roxo-magenta: #8A2BE2; /* Cor principal, Roxo Azulado para ser vibrante */
     --roxo-claro: #9370DB;   /* Tom mais claro para hover */
-    --preto: #1a1a1a;
-    --branco: #ffffff;
+    --preto: #121212;
+    --branco: #f8f5f0;
 }
 
 /* Reset Básico */
@@ -50,6 +57,7 @@ body {
     font-size: 1.5em;
     font-weight: bold; /* Arial Bold */
     color: var(--roxo-magenta);
+    font-family: 'corpta',  ;
 }
 
 nav a {
@@ -118,18 +126,14 @@ nav a:hover {
     background-color: var(--roxo-magenta);
     color: var(--branco);
     padding: 12px 25px;
-    border: none;
+    border: var(--roxo-magenta);
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     font-weight: bold; /* Arial Bold */
     transition: background-color 0.3s;
+    margin-right: 15px;
 }
-
-.btn-primary:hover {
-    background-color: var(--roxo-claro);
-}
-
 /* Media Queries para Responsividade */
 @media (max-width: 768px) {
     .header {
@@ -163,4 +167,169 @@ nav a:hover {
     .subtitle {
         font-size: 1.5em;
     }
+}
+
+/* Estilos Gerais de Seção */
+
+.section {
+    /* Certifique-se de que o fundo e o texto base são consistentes */
+    padding: 80px 10%; 
+    background-color: #121212; /* Fundo escuro */
+    color: #E0E0E0; /* Texto claro */
+}
+
+.section h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #6C5CE7; /* Roxo principal */
+}
+
+/* =================================== */
+/* 2. HABILIDADES */
+/* =================================== */
+
+.skills-grid {
+    /* Cria 3 colunas, ajustando automaticamente na tela */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.skill-item {
+    background-color: #1F1F1F; /* Fundo do card ligeiramente mais claro */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-top: 5px solid #6C5CE7; /* Linha roxa de destaque */
+    transition: transform 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px); /* Efeito sutil no hover */
+}
+
+.skill-item h3 {
+    color: #8e7ceb; /* Título secundário roxo */
+    margin: 15px 0 10px;
+}
+
+/* =================================== */
+/* 3. PROJETOS */
+/* =================================== */
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background-color: #1F1F1F;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid #6C5CE7;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #E0E0E0;
+    text-align: left;
+}
+
+.project-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px; /* Reutilizando a solução de espaçamento! */
+}
+
+.btn-project {
+    padding: 8px 18px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid #6C5CE7;
+    color: #6C5CE7;
+}
+
+.btn-project.demo {
+    background-color: #6C5CE7;
+    color: #FFFFFF;
+}
+
+.btn-project:hover {
+    background-color: #8e7ceb;
+    color: #FFFFFF;
+}
+
+/* =================================== */
+/* 4. CONTATO */
+/* =================================== */
+
+.contact-message {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1em;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 2px solid #6C5CE7;
+    border-radius: 5px;
+    background-color: #1F1F1F;
+    color: #E0E0E0;
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .btn-primary {
+    /* Alinha o botão de enviar do formulário */
+    align-self: center;
+    width: 100%;
+    max-width: 200px; 
+}
+
+.social-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: #6C5CE7;
+    text-decoration: none;
+    font-size: 1.1em;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #8e7ceb;
 }

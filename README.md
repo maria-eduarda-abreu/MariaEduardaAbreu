@@ -1,4 +1,8 @@
-### CONSTRUINDO UM NOVO PORTIFÓLIO
+### Maria Eduarda Abreu 
+
+
+
+
 
 
 ## TECNOLOGIAS ESCOLHIDAS
@@ -7,7 +11,6 @@
 - CSS3
 - VUE.JS
 - JAVASCRIPT 
-- JSON
-- TAILWIND
+
 
 
