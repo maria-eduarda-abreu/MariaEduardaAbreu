@@ -1,6 +1,7 @@
 @font-face {
-    font-family: 'flexing-bold.ttf';
-    src: url('docs/fonts/flexing-bold.ttf') format('truetype');
+    /* CORREÇÃO APLICADA: Certifique-se de que o caminho está correto e o format */
+    font-family: 'flexing-bold'; /* Nome simplificado */
+    src: url('docs/fonts/flexing-bold.ttf') format('truetype'); /* Alterado 'ttf' para 'truetype' */
     font-weight: bold;
     font-style: normal;
 }
@@ -11,6 +12,8 @@
     --roxo-claro: #9370DB;   /* Tom mais claro para hover */
     --preto: #121212;
     --branco: #f8f5f0;
+    --header-bg: rgba(19, 7, 39, 0.842);
+    /*--header-bg: rgba(255, 255, 255, 0.1); /* Fundo do Header (Branco transparente) */
 }
 
 /* Reset Básico */
@@ -25,22 +28,47 @@ body {
     color: var(--branco);
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    overflow-x: hidden; /* Previne scroll horizontal */
+    padding-top: 80px; /* IMPORTANTE: Adiciona padding para o conteúdo não ficar atrás do header fixo */
 }
 
-/* Layout Principal */
-.portfolio {
+/* -------------------------------------- */
+/* 1. LAYOUT GERAL E HEADERS */
+/* -------------------------------------- */
+
+/* NOVO: Wrapper para o Conteúdo Principal (Centraliza o conteúdo abaixo do Hero) */
+.main-content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Cabeçalho */
+/* Cabeçalho - AGORA FULL-WIDTH (Ocupa 100% da Largura da Tela) */
 .header {
+    width: 100%; 
+    padding: 20px 0;
+    margin: 0;
+    border-bottom: 2px solid var(--roxo-magenta);
+    position: fixed; /* Fixa o header no topo */
+    top: 0;
+    z-index: 1000;
+    
+    /* Fundo branco transparente */
+    background-color: var(--header-bg);
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px); 
+    display: flex;
+    justify-content: center;
+}
+
+/* Wrapper para centralizar o conteúdo do Header */
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    border-bottom: 2px solid var(--roxo-magenta);
+    max-width: 1200px; /* Limita o conteúdo na mesma largura das seções */
+    margin: 0 auto;
+    padding: 0 60px; 
 }
 
 .logo {
@@ -49,22 +77,22 @@ body {
 }
 
 .logo-img {
-    height: 40px; /* Ajuste conforme o tamanho da sua logo */
+    height: 40px; 
     margin-right: 10px;
 }
 
 .logo-text {
     font-size: 1.5em;
-    font-weight: bold; /* Arial Bold */
+    font-weight: bold; 
     color: var(--roxo-magenta);
-    font-family: 'flexing-bold.ttf',  ;
+    font-family: 'flexing-bold', Arial, sans-serif;
 }
 
 nav a {
     color: var(--branco);
     text-decoration: none;
     margin-left: 20px;
-    font-weight: normal; /* Arial padrão */
+    font-weight: normal; 
     transition: color 0.3s;
 }
 
@@ -72,13 +100,71 @@ nav a:hover {
     color: var(--roxo-magenta);
 }
 
-/* Seção Hero/Sobre */
-.hero {
+/* -------------------------------------- */
+/* 2. SEÇÃO INÍCIO (TELA CHEIA E ANIMAÇÃO) */
+/* -------------------------------------- */
+
+.fullscreen-hero {
+    /* Ocupa a altura da tela inteira (100vh) MENOS o padding-top do body */
+    /* Usamos calc para garantir que o 100vh funcione corretamente */
+    height: calc(100vh - 80px); /* Subtrai a altura do header */
+    width: 100%;
+    
+    /* Centraliza o conteúdo (VERTICAL e HORIZONTAL) */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    
+    /* Fundo com gradiente e preto */
+    background: linear-gradient(180deg, rgba(138, 43, 226, 0.2) 0%, var(--preto) 100%);
+}
+
+/* Wrapper para o texto centralizado */
+.hero-center-content {
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+/* Estilos para o efeito de digitação */
+.typing-text-container {
+    font-family: 'flexing-bold', Arial, sans-serif; /* Usando o novo nome da fonte */
+    font-size: 4.5em; /* Aumentado para ser o destaque da tela */
+    line-height: 1.2;
+    color: var(--branco); 
+    font-weight: bold;
+    display: inline-block;
+    /* white-space: nowrap; (Removido para permitir quebra de linha em telas pequenas) */
+}
+
+.cursor {
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: bold;
+    color: var(--roxo-magenta);
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+/* -------------------------------------- */
+/* 3. SEÇÃO SOBRE (HERO RESUMO) */
+/* -------------------------------------- */
+
+.hero-resumo {
+    /* Esta seção se torna a primeira a aparecer após o scroll */
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 100px 0;
     gap: 40px;
+    /* Garante que o fundo seja o preto padrão */
+    background-color: var(--preto);
 }
 
 .hero-content {
@@ -89,20 +175,20 @@ nav a:hover {
     font-size: 3em;
     margin-bottom: 10px;
     color: var(--branco);
-    font-weight: bold; /* Arial Bold */
+    font-weight: bold; 
 }
 
 .subtitle {
     font-size: 1.8em;
     color: var(--roxo-magenta);
     margin-bottom: 20px;
-    font-weight: normal; /* Arial padrão */
+    font-weight: normal; 
 }
 
 .description {
     font-size: 1.1em;
     margin-bottom: 30px;
-    font-weight: normal; /* Arial padrão */
+    font-weight: normal; 
 }
 
 /* Imagem de Perfil */
@@ -116,7 +202,7 @@ nav a:hover {
     width: 300px;
     height: 300px;
     object-fit: cover;
-    border-radius: 50%; /* Foto redonda */
+    border-radius: 50%; 
     border: 5px solid var(--roxo-magenta);
     box-shadow: 0 0 20px var(--roxo-magenta);
 }
@@ -130,22 +216,195 @@ nav a:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    font-weight: bold; /* Arial Bold */
+    font-weight: bold; 
     transition: background-color 0.3s;
     margin-right: 15px;
 }
+
+/* -------------------------------------- */
+/* 4. ESTILOS GERAIS DE SEÇÃO E OUTROS */
+/* -------------------------------------- */
+
+.section {
+    padding: 80px 0; /* Ajuste o padding lateral para 0, pois o wrapper cuida disso */
+    background-color: var(--preto);
+    color: var(--branco);
+}
+
+.section h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    text-align: center;
+    color: var(--roxo-magenta); 
+}
+
+/* HABILIDADES */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.skill-item {
+    background-color: #1F1F1F;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-top: 5px solid var(--roxo-magenta); 
+    transition: transform 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px); 
+}
+
+.skill-item h3 {
+    color: var(--roxo-claro); 
+    margin: 15px 0 10px;
+}
+
+/* PROJETOS */
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background-color: #1F1F1F;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--roxo-magenta);
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--branco);
+    text-align: left;
+}
+
+.project-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px; 
+}
+
+.btn-project {
+    padding: 8px 18px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid var(--roxo-magenta);
+    color: var(--roxo-magenta);
+}
+
+.btn-project.demo {
+    background-color: var(--roxo-magenta);
+    color: #FFFFFF;
+}
+
+.btn-project:hover {
+    background-color: var(--roxo-claro);
+    color: #FFFFFF;
+}
+
+/* CONTATO */
+
+.contact-message {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1em;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 2px solid var(--roxo-magenta);
+    border-radius: 5px;
+    background-color: #1F1F1F;
+    color: var(--branco);
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .btn-primary {
+    align-self: center;
+    width: 100%;
+    max-width: 200px; 
+}
+
+.social-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--roxo-magenta);
+    text-decoration: none;
+    font-size: 1.1em;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--roxo-claro);
+}
+
 /* Media Queries para Responsividade */
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
+        padding-top: 15px;
     }
+    
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
     nav {
         margin-top: 15px;
     }
     nav a {
         margin: 0 10px;
     }
-    .hero {
+
+    /* Reduz o tamanho da fonte para a tela cheia */
+    .typing-text-container {
+        font-size: 3em; 
+        white-space: normal; /* Permite quebrar a linha em telas pequenas */
+    }
+
+    .hero-resumo {
         flex-direction: column-reverse;
         text-align: center;
         padding: 50px 0;
@@ -167,169 +426,7 @@ nav a:hover {
     .subtitle {
         font-size: 1.5em;
     }
-}
-
-/* Estilos Gerais de Seção */
-
-.section {
-    /* Certifique-se de que o fundo e o texto base são consistentes */
-    padding: 80px 10%; 
-    background-color: #121212; /* Fundo escuro */
-    color: #E0E0E0; /* Texto claro */
-}
-
-.section h2 {
-    font-size: 2.5em;
-    margin-bottom: 50px;
-    text-align: center;
-    color: #6C5CE7; /* Roxo principal */
-}
-
-/* =================================== */
-/* 2. HABILIDADES */
-/* =================================== */
-
-.skills-grid {
-    /* Cria 3 colunas, ajustando automaticamente na tela */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.skill-item {
-    background-color: #1F1F1F; /* Fundo do card ligeiramente mais claro */
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    border-top: 5px solid #6C5CE7; /* Linha roxa de destaque */
-    transition: transform 0.3s;
-}
-
-.skill-item:hover {
-    transform: translateY(-5px); /* Efeito sutil no hover */
-}
-
-.skill-item h3 {
-    color: #8e7ceb; /* Título secundário roxo */
-    margin: 15px 0 10px;
-}
-
-/* =================================== */
-/* 3. PROJETOS */
-/* =================================== */
-
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-}
-
-.project-card {
-    background-color: #1F1F1F;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s;
-}
-
-.project-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-bottom: 3px solid #6C5CE7;
-}
-
-.project-info {
-    padding: 20px;
-}
-
-.project-card h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #E0E0E0;
-    text-align: left;
-}
-
-.project-links {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px; /* Reutilizando a solução de espaçamento! */
-}
-
-.btn-project {
-    padding: 8px 18px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    border: 1px solid #6C5CE7;
-    color: #6C5CE7;
-}
-
-.btn-project.demo {
-    background-color: #6C5CE7;
-    color: #FFFFFF;
-}
-
-.btn-project:hover {
-    background-color: #8e7ceb;
-    color: #FFFFFF;
-}
-
-/* =================================== */
-/* 4. CONTATO */
-/* =================================== */
-
-.contact-message {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 30px;
-    font-size: 1.1em;
-}
-
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 15px;
-    border: 2px solid #6C5CE7;
-    border-radius: 5px;
-    background-color: #1F1F1F;
-    color: #E0E0E0;
-    font-size: 1em;
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-form .btn-primary {
-    /* Alinha o botão de enviar do formulário */
-    align-self: center;
-    width: 100%;
-    max-width: 200px; 
-}
-
-.social-links {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.social-links a {
-    color: #6C5CE7;
-    text-decoration: none;
-    font-size: 1.1em;
-    margin: 0 15px;
-    transition: color 0.3s;
-}
-
-.social-links a:hover {
-    color: #8e7ceb;
+    .section {
+        padding: 50px 0;
+    }
 }

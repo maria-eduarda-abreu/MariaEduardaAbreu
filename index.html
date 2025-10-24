@@ -17,14 +17,23 @@
                 <img src="src/img/logoprincipal.png" alt="Logo Marca" class="logo-img">
             </div>
             <nav>
-                <a href="#" class="nav-link">Início</a>
-                <a href="#sobre" class="nav-link">Habilidades</a>
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#habilidades" class="nav-link">Habilidades</a>
                 <a href="#projetos" class="nav-link">Projetos</a>
                 <a href="#contato" class="nav-link">Contato</a>
             </nav>
         </header>
 
-        <section id="sobre" class="hero">
+        <section id="inicio" class="fullscreen-hero">
+            <div class="hero-center-content">
+                <h1 class="typing-text-container">{{ typingText }}<span class="cursor">|</span></h1>
+            </div>
+        </section>
+
+        <div class="main-content-wrapper">
+
+        <section id="sobre" class="section hero-resumo">
             <div class="hero-content">
                 <h1 class="main-title">Olá, eu sou a {{ nome }}!</h1>
                 <h2 class="subtitle">{{ cargo }}</h2>
@@ -62,7 +71,7 @@
             <div class="projects-container">
                 
                 <div class="project-card">
-                    <img src="src/img/projectorganizedin.png" alt="Captura de tela do Projeto X">
+                    <img src="src/img/projectorganizedin.png" alt="Captura de tela do Projeto OrganizeDin Web">
                     <div class="project-info">
                         <h3>OrganizeDin - App Gestão Financeira</h3>
                         <p>Desenvolvimento full-stack de um sistema que auxilia qualquer pessoa na gestão financeira. Utiliza tecnologias como java, oracle DB, spring boot, js, html e css .</p>
