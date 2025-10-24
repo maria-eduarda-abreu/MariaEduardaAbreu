@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'corpta';
-    src: url('docs/fonts/corpta.otf') format('otf');
+    font-family: 'flexing-bold.ttf';
+    src: url('docs/fonts/flexing-bold.ttf') format('ttf');
     font-weight: bold;
     font-style: normal;
 }
@@ -57,7 +57,7 @@ body {
     font-size: 1.5em;
     font-weight: bold; /* Arial Bold */
     color: var(--roxo-magenta);
-    font-family: 'corpta',  ;
+    font-family: 'flexing-bold.ttf',  ;
 }
 
 nav a {
