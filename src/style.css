@@ -234,35 +234,61 @@ nav a:hover {
 .section h2 {
     font-size: 2.3em;
     margin-bottom: 50px;
-    text-align: left;
+    text-align: center;
     color: var(--roxo-magenta); 
 }
 
 /* HABILIDADES */
-
-.skills-grid {
+.habilidades-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    /* Cria colunas automáticas que cabem (minmax(largura_minima, 1fr) */
+    /* 100px é a largura mínima para o item */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    gap: 30px; /* Espaço entre os itens */
+    max-width: 1200px; /* Largura máxima da grade */
+    margin: 0 auto 50px auto; /* Centraliza a grade */
+    padding: 0 20px;
 }
 
-.skill-item {
-    background-color: #1F1F1F;
-    padding: 30px;
-    border-radius: 10px;
+/* ESTILO DE CADA ITEM DE HABILIDADE */
+.habilidade-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    border-top: 5px solid var(--roxo-magenta); 
-    transition: transform 0.3s;
+    
+    /* Cores e bordas similares ao seu tema */
+    background-color: #1a1a1e; /* Cor de fundo escura */
+    padding: 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    
+    /* Borda roxa de destaque, como na imagem */
+    border-bottom: 3px solid #9933ff; 
+    transition: transform 0.3s ease; /* Efeito suave para hover */
 }
 
-.skill-item:hover {
-    transform: translateY(-5px); 
+.habilidade-item:hover {
+    transform: translateY(-5px); /* Efeito de "levantar" ao passar o mouse */
+    border-bottom-color: #ffffff; /* Muda a cor da borda no hover */
 }
 
-.skill-item h3 {
-    color: var(--roxo-claro); 
-    margin: 15px 0 10px;
+/* ESTILO DOS ÍCONES (IMAGENS) */
+.habilidade-item img {
+    width: 50px; /* Tamanho do ícone */
+    height: 50px;
+    margin-bottom: 10px;
+    /* Se a imagem for preta e você quiser o ícone roxo: */
+    /* filter: invert(30%) sepia(90%) saturate(2000%) hue-rotate(250deg); */
+}
+
+/* ESTILO DO NOME DA TECNOLOGIA */
+.habilidade-item p {
+    color: #ffffff; /* Cor do texto (nome da tecnologia) */
+    margin: 0;
+    font-size: 0.9em;
+    font-weight: 500;
 }
 
 /* PROJETOS */
