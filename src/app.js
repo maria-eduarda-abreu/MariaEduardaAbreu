@@ -6,7 +6,7 @@ const { createApp, ref } = Vue;
 // Novo array com as frases para o efeito de digitação
 const phrases = [
     'Transformo ideias em soluções digitais p',
-    'Transformo ideias em soluções digitais incríveis'
+    'Transformo ideias em soluções digitais eficiêntes.'
 ];
 
 // Função principal de digitação
@@ -66,7 +66,7 @@ createApp({
         // Dados da Maria Eduarda
         const nome = ref('Maria Eduarda Abreu');
         const cargo = ref('Desenvolvedora de Software Fullstack Jr.');
-        const descricao = ref('Sou estudante do 3 semetre de Análise e Desenvolvimento de Sistemas na FIAP. Meu foco é criar soluções digitais que unam design, funcionalidade e experiência do usuáriopara gerar valor real aos clientes.');
+        const descricao = ref('Sou estudante do 3 semetre de Análise e Desenvolvimento de Sistemas na FIAP. Meu foco é criar soluções digitais que unam design, funcionalidades e experiência do usuário para gerar valor real aos clientes.');
 
         // Novo: Efeito de digitação
         const { text: typingText } = useTypingEffect(phrases);
