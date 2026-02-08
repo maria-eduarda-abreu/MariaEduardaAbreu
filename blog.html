@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Maria Eduarda Abreu</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" type="image/png" href="src/img/logoedu3.png"/>
+</head>
+<body>
+    <div id="blog-app" class="portfolio">
+        
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="src/img/logo/logoprincipal.png" alt="Logo Marca" class="logo-img">
+                    </a>
+                </div>
+                <nav>
+                    <a href="index.html" class="nav-link">Início</a>
+                    <a href="index.html#sobre" class="nav-link">Sobre</a>
+                    <a href="index.html#habilidades" class="nav-link">Habilidades</a>
+                    <a href="index.html#projetos" class="nav-link">Projetos</a>
+                    <a href="blog.html" class="nav-link active" style="color: var(--roxo-magenta);">Blog</a>
+                    
+                </nav>
+            </div>
+        </header>
+
+        <section class="section" style="padding-top: 120px; text-align: center;">
+            <h1 class="main-title">Meus Artigos & Estudos</h1>
+            <p class="description">Compartilhando conhecimento sobre Java, Spring, Vue e Arquitetura.</p>
+        </section>
+
+        <div class="main-content-wrapper">
+            <section id="artigos" class="section">
+                <div class="projects-container"> 
+                    
+                    <article class="project-card" v-for="post in articles" :key="post.id" style="display: flex; flex-direction: column;">
+                        <img v-if="post.image" :src="post.image" :alt="post.title" style="height: 150px;">
+                        
+                        <div class="project-info" style="flex: 1; display: flex; flex-direction: column;">
+                            <small style="color: var(--roxo-claro); margin-bottom: 5px;">{{ post.date }} • {{ post.category }}</small>
+                            <h3>{{ post.title }}</h3>
+                            <p style="flex: 1;">{{ post.summary }}</p>
+                            
+                            <div class="project-links" style="margin-top: auto;">
+                                <a :href="post.link" class="btn-project">Ler Artigo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+                
+                <div v-if="articles.length === 0" style="text-align: center; margin-top: 50px;">
+                    <p>Em breve novos conteúdos por aqui! 🚀</p>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        // Importando os dados (que criaremos no próximo passo)
+        import { articlesData } from './src/js/data.js';
+
+        createApp({
+            setup() {
+                const articles = ref(articlesData);
+                return { articles };
+            }
+        }).mount('#blog-app');
+    </script>
+</body>
+</html>
