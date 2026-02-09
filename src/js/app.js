@@ -72,6 +72,18 @@ const app = createApp({
         // Inicializando o efeito de digitação
         const { text: typingText } = useTypingEffect(typingPhrases);
 
+        // Lógica do Menu Mobile
+        const isMenuOpen = ref(false);
+
+        const toggleMenu = () => {
+            isMenuOpen.value = !isMenuOpen.value;
+        };
+
+        // Função para fechar o menu ao clicar em um link (opcional, mas recomendado)
+        const closeMenu = () => {
+            isMenuOpen.value = false;
+        };
+
         // Retorno para o HTML
         return {
             nome,
@@ -79,7 +91,10 @@ const app = createApp({
             descricao,
             skills,
             projects,
-            typingText
+            typingText,    // <--- ADICIONEI VÍRGULA AQUI
+            isMenuOpen,    // <--- ADICIONEI VÍRGULA AQUI
+            toggleMenu,    // <--- ADICIONEI VÍRGULA AQUI
+            closeMenu      // <--- ADICIONEI VÍRGULA AQUI
         };
     }
 });

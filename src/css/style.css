@@ -1,19 +1,16 @@
 @font-face {
-    /* CORREÇÃO APLICADA: Certifique-se de que o caminho está correto e o format */
-    font-family: 'flexing-bold'; /* Nome simplificado */
-    src: url('docs/fonts/flexing-bold.ttf') format('truetype'); /* Alterado 'ttf' para 'truetype' */
+    font-family: 'flexing-bold';/ src: url('docs/fonts/flexing-bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
-/* Variáveis de Cores */
+/* Var colors */
 :root {
-    --roxo-magenta: #8A2BE2; /* Cor principal, Roxo Azulado para ser vibrante */
-    --roxo-claro: #9370DB;   /* Tom mais claro para hover */
+    --roxo-magenta: #8A2BE2;
+    --roxo-claro: #9370DB;
     --preto: #121212;
     --branco: #f8f5f0;
     --header-bg: rgba(19, 7, 39, 0.842);
-    /*--header-bg: rgba(255, 255, 255, 0.1); /* Fundo do Header (Branco transparente) */
 }
 
 /* Reset Básico */
@@ -28,35 +25,117 @@ body {
     color: var(--branco);
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    overflow-x: hidden; /* Previne scroll horizontal */
-    padding-top: 80px; /* IMPORTANTE: Adiciona padding para o conteúdo não ficar atrás do header fixo */
+    overflow-x: hidden;
+    /*  scroll horizontal */
+    padding-top: 80px;
+    /* Add padding para o conteúdo não ficar atrás do header fixo */
 }
+
+
+/* -------------------------------------- */
+/* 1. LAYOUT GERAL MOBILE */
+/* -------------------------------------- */
+
+/* Estilo do Botão Hambúrguer (Escondido no Desktop) */
+.mobile-menu-btn {
+    display: none;
+    /* Padrão: não aparece */
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1001;
+    /* Fica acima do menu */
+}
+
+.mobile-menu-btn .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--roxo-magenta);
+    transition: 0.3s;
+}
+
+/* Regras Apenas para Celular/Tablet */
+@media (max-width: 768px) {
+
+    /* Mostrar o botão */
+    .mobile-menu-btn {
+        display: flex;
+        position: absolute;
+        top: 32px;
+        right: 20px;
+    
+    }
+
+    /* O Menu em si (Escondido por padrão) */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Começa fora da tela (direita) */
+        width: 70%;
+        /* Ocupa 70% da tela */
+        height: 100vh;
+        background-color: rgba(19, 7, 39, 0.98);
+        /* Fundo escuro quase sólido */
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top:120px;
+        padding-left:40px;
+        padding-right:10px;
+        gap:30px;
+        transition: 0.4s ease-in-out;
+        z-index: 1000;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        display: flex;
+        /* Garante que é flex para alinhar itens */
+    }
+
+    /* Quando a classe .active for adicionada pelo Vue */
+    nav.active {
+        right: 0;
+        /* Entra na tela */
+    }
+
+    nav a {
+        margin: 20px 0;
+        /* Espaço entre os links */
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+}
+
+
 
 /* -------------------------------------- */
 /* 1. LAYOUT GERAL E HEADERS */
 /* -------------------------------------- */
 
-/* NOVO: Wrapper para o Conteúdo Principal (Centraliza o conteúdo abaixo do Hero) */
+/* Centraliza o conteúdo abaixo do Hero */
 .main-content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Cabeçalho - AGORA FULL-WIDTH (Ocupa 100% da Largura da Tela) */
+/* Cabeçalho */
 .header {
-    width: 100%; 
-    padding: 20px 0;
+    width: 100%;
+    padding: 30px 0;
     margin: 0;
     border-bottom: 2px solid var(--roxo-magenta);
-    position: fixed; /* Fixa o header no topo */
+    position: fixed;
+    /* Fixa o header no topo */
     top: 0;
     z-index: 1000;
-    
+
     /* Fundo branco transparente */
     background-color: var(--header-bg);
-    backdrop-filter: blur(5px); 
-    -webkit-backdrop-filter: blur(5px); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
 }
@@ -66,9 +145,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px; /* Limita o conteúdo na mesma largura das seções */
+    max-width: 1200px;
+    width: 100%;
+    /* Limita o conteúdo na mesma largura das seções */
     margin: 0 auto;
-    padding: 0 60px; 
+    padding: 0 20px;
 }
 
 .logo {
@@ -77,13 +158,14 @@ body {
 }
 
 .logo-img {
-    height: 40px; 
-    margin-right: 10px;
+    height: 40px;
+    margin-right: 50px;
+    margin-left: 10px;
 }
 
 .logo-text {
     font-size: 1.5em;
-    font-weight: bold; 
+    font-weight: bold;
     color: var(--roxo-magenta);
     font-family: 'flexing-bold', Arial, sans-serif;
 }
@@ -92,7 +174,7 @@ nav a {
     color: var(--branco);
     text-decoration: none;
     margin-left: 20px;
-    font-weight: normal; 
+    font-weight: normal;
     transition: color 0.3s;
 }
 
@@ -107,15 +189,16 @@ nav a:hover {
 .fullscreen-hero {
     /* Ocupa a altura da tela inteira (100vh) MENOS o padding-top do body */
     /* Usamos calc para garantir que o 100vh funcione corretamente */
-    height: calc(100vh - 80px); /* Subtrai a altura do header */
+    height: calc(100vh - 80px);
+    /* Subtrai a altura do header */
     width: 100%;
-    
+
     /* Centraliza o conteúdo (VERTICAL e HORIZONTAL) */
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     text-align: center;
-    
+
     /* Fundo com gradiente e preto */
     background: linear-gradient(180deg, rgba(138, 43, 226, 0.2) 0%, var(--preto) 100%);
 }
@@ -128,10 +211,12 @@ nav a:hover {
 
 /* Estilos para o efeito de digitação */
 .typing-text-container {
-    font-family: 'flexing-bold', Arial, sans-serif; /* Usando o novo nome da fonte */
-    font-size: 4.5em; /* Aumentado para ser o destaque da tela */
+    font-family: 'flexing-bold', Arial, sans-serif;
+    /* Usando o novo nome da fonte */
+    font-size: 4.5em;
+    /* Aumentado para ser o destaque da tela */
     line-height: 1.2;
-    color: var(--branco); 
+    color: var(--branco);
     font-weight: bold;
     display: inline-block;
     /* white-space: nowrap; (Removido para permitir quebra de linha em telas pequenas) */
@@ -146,9 +231,17 @@ nav a:hover {
 }
 
 @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 
@@ -175,20 +268,20 @@ nav a:hover {
     font-size: 3em;
     margin-bottom: 10px;
     color: var(--branco);
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 .subtitle {
     font-size: 1.8em;
     color: var(--roxo-magenta);
     margin-bottom: 20px;
-    font-weight: normal; 
+    font-weight: normal;
 }
 
 .description {
     font-size: 1.1em;
     margin-bottom: 30px;
-    font-weight: normal; 
+    font-weight: normal;
 }
 
 /* Imagem de Perfil */
@@ -202,7 +295,7 @@ nav a:hover {
     width: 300px;
     height: 300px;
     object-fit: cover;
-    border-radius: 50%; 
+    border-radius: 50%;
     border: 5px solid var(--roxo-magenta);
     box-shadow: 0 0 20px var(--roxo-magenta);
 }
@@ -216,7 +309,7 @@ nav a:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    font-weight: bold; 
+    font-weight: bold;
     transition: background-color 0.3s;
     margin-right: 15px;
 }
@@ -226,7 +319,8 @@ nav a:hover {
 /* -------------------------------------- */
 
 .section {
-    padding: 80px 0; /* Ajuste o padding lateral para 0, pois o wrapper cuida disso */
+    padding: 80px 0;
+    /* Ajuste o padding lateral para 0, pois o wrapper cuida disso */
     background-color: var(--preto);
     color: var(--branco);
 }
@@ -235,7 +329,7 @@ nav a:hover {
     font-size: 2.3em;
     margin-bottom: 50px;
     text-align: center;
-    color: var(--roxo-magenta); 
+    color: var(--roxo-magenta);
 }
 
 /* HABILIDADES */
@@ -243,10 +337,13 @@ nav a:hover {
     display: grid;
     /* Cria colunas automáticas que cabem (minmax(largura_minima, 1fr) */
     /* 100px é a largura mínima para o item */
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-    gap: 30px; /* Espaço entre os itens */
-    max-width: 1200px; /* Largura máxima da grade */
-    margin: 0 auto 50px auto; /* Centraliza a grade */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 30px;
+    /* Espaço entre os itens */
+    max-width: 1200px;
+    /* Largura máxima da grade */
+    margin: 0 auto 50px auto;
+    /* Centraliza a grade */
     padding: 0 20px;
 }
 
@@ -257,26 +354,31 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    
+
     /* Cores e bordas similares ao seu tema */
-    background-color: #1a1a1e; /* Cor de fundo escura */
+    background-color: #1a1a1e;
+    /* Cor de fundo escura */
     padding: 20px 10px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    
+
     /* Borda roxa de destaque, como na imagem */
-    border-bottom: 3px solid #9933ff; 
-    transition: transform 0.3s ease; /* Efeito suave para hover */
+    border-bottom: 3px solid #9933ff;
+    transition: transform 0.3s ease;
+    /* Efeito suave para hover */
 }
 
 .habilidade-item:hover {
-    transform: translateY(-5px); /* Efeito de "levantar" ao passar o mouse */
-    border-bottom-color: #ffffff; /* Muda a cor da borda no hover */
+    transform: translateY(-5px);
+    /* Efeito de "levantar" ao passar o mouse */
+    border-bottom-color: #ffffff;
+    /* Muda a cor da borda no hover */
 }
 
 /* ESTILO DOS ÍCONES (IMAGENS) */
 .habilidade-item img {
-    width: 50px; /* Tamanho do ícone */
+    width: 50px;
+    /* Tamanho do ícone */
     height: 50px;
     margin-bottom: 10px;
     /* Se a imagem for preta e você quiser o ícone roxo: */
@@ -285,7 +387,8 @@ nav a:hover {
 
 /* ESTILO DO NOME DA TECNOLOGIA */
 .habilidade-item p {
-    color: #ffffff; /* Cor do texto (nome da tecnologia) */
+    color: #ffffff;
+    /* Cor do texto (nome da tecnologia) */
     margin: 0;
     font-size: 0.9em;
     font-weight: 500;
@@ -328,7 +431,7 @@ nav a:hover {
 .project-links {
     margin-top: 20px;
     display: flex;
-    gap: 15px; 
+    gap: 15px;
 }
 
 .btn-project {
@@ -385,7 +488,7 @@ nav a:hover {
 .contact-form .btn-primary {
     align-self: center;
     width: 100%;
-    max-width: 200px; 
+    max-width: 200px;
 }
 
 .social-links {
@@ -411,7 +514,7 @@ nav a:hover {
         flex-direction: column;
         padding-top: 15px;
     }
-    
+
     .header-content {
         flex-direction: column;
         text-align: center;
@@ -420,14 +523,16 @@ nav a:hover {
     nav {
         margin-top: 15px;
     }
+
     nav a {
         margin: 0 10px;
     }
 
     /* Reduz o tamanho da fonte para a tela cheia */
     .typing-text-container {
-        font-size: 3em; 
-        white-space: normal; /* Permite quebrar a linha em telas pequenas */
+        font-size: 3em;
+        white-space: normal;
+        /* Permite quebrar a linha em telas pequenas */
     }
 
     .hero-resumo {
@@ -435,23 +540,29 @@ nav a:hover {
         text-align: center;
         padding: 50px 0;
     }
+
     .hero-content {
         max-width: 100%;
     }
+
     .hero-image {
         margin-bottom: 30px;
         max-width: 100%;
     }
+
     .profile-photo {
         width: 200px;
         height: 200px;
     }
+
     .main-title {
         font-size: 2.5em;
     }
+
     .subtitle {
         font-size: 1.5em;
     }
+
     .section {
         padding: 50px 0;
     }
