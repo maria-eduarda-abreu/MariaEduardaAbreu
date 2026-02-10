@@ -1,26 +1,68 @@
-// src/js/data.js
-
-// 1. Frases do efeito de digitação
-export const typingPhrases = [
-    'Transformo ideias em soluções digitais.', // Corrigi o "p" solto
-    'Transformo ideias em soluções digitais eficientes.' // Corrigi "eficiêntes" (sem acento)
-];
-
-// 2. Dados Pessoais
-export const profileData = {
-    nome: 'Maria Eduarda Abreu',
-    cargo: 'Desenvolvedora de Software Fullstack Jr.',
-    descricao: 'Sou estudante do 3º semestre de Análise e Desenvolvimento de Sistemas na FIAP. Meu foco é criar soluções digitais que unam design, funcionalidades e experiência do usuário para gerar valor real aos clientes.'
+// Textos da Interface (Menu, Títulos, Botões)
+export const uiLabels = {
+    pt: {
+        menu_home: "Início", menu_about: "Sobre", menu_skills: "Habilidades", menu_projects: "Projetos", menu_blog: "Blog", menu_contact: "Contato",
+        btn_download: "Baixar CV", title_skills: "Habilidades", title_projects: "Projetos", btn_code: "Ver Código", btn_demo: "Demo Live",
+        title_contact: "Entre em Contato", msg_contact: "Mande uma mensagem e vamos tirar seu projeto do papel!", btn_send: "Enviar Mensagem", footer_msg: "Desenvolvido por Maria Eduarda"
+    },
+    en: {
+        menu_home: "Home", menu_about: "About", menu_skills: "Skills", menu_projects: "Projects", menu_blog: "Blog", menu_contact: "Contact",
+        btn_download: "Download CV", title_skills: "Skills", title_projects: "Projects", btn_code: "View Code", btn_demo: "Live Demo",
+        title_contact: "Get in Touch", msg_contact: "Send a message and let's bring your project to life!", btn_send: "Send Message", footer_msg: "Developed by Maria Eduarda"
+    },
+    es: {
+        menu_home: "Inicio", menu_about: "Sobre Mí", menu_skills: "Habilidades", menu_projects: "Proyectos", menu_blog: "Blog", menu_contact: "Contacto",
+        btn_download: "Descargar CV", title_skills: "Habilidades", title_projects: "Proyectos", btn_code: "Ver Código", btn_demo: "Demo en Vivo",
+        title_contact: "Contáctame", msg_contact: "¡Envía un mensaje y hagamos realidad tu proyecto!", btn_send: "Enviar Mensaje", footer_msg: "Desarrollado por Maria Eduarda"
+    },
+    fr: {
+        menu_home: "Accueil", menu_about: "À propos", menu_skills: "Compétences", menu_projects: "Projets", menu_blog: "Blog", menu_contact: "Contact",
+        btn_download: "Télécharger CV", title_skills: "Compétences", title_projects: "Projets", btn_code: "Voir le Code", btn_demo: "Démo Live",
+        title_contact: "Contactez-moi", msg_contact: "Envoyez un message et donnons vie à votre projet !", btn_send: "Envoyer Message", footer_msg: "Développé par Maria Eduarda"
+    },
+    it: {
+        menu_home: "Home", menu_about: "Chi Sono", menu_skills: "Competenze", menu_projects: "Progetti", menu_blog: "Blog", menu_contact: "Contatti",
+        btn_download: "Scarica CV", title_skills: "Competenze", title_projects: "Progetti", btn_code: "Vedi Codice", btn_demo: "Demo Live",
+        title_contact: "Contattami", msg_contact: "Invia un messaggio e realizziamo il tuo progetto!", btn_send: "Invia Messaggio", footer_msg: "Sviluppato da Maria Eduarda"
+    }
 };
 
-// 3. Lista de Habilidades (Corrigi os nomes que estavam errados no HTML original)
+// 2. Frases do efeito de digitação
+export const typingPhrases = {
+    pt: ['Transformo ideias em soluções digitais.', 'Desenvolvedora Fullstack.'],
+    en: ['I turn ideas into digital solutions.', 'Fullstack Developer.'],
+    es: ['Transformo ideas en soluciones digitales.', 'Desarrolladora Fullstack.'],
+    fr: ['Je transforme des idées en solutions numériques.', 'Développeuse Fullstack.'],
+    it: ['Trasformo idee in soluzioni digitali.', 'Sviluppatrice Fullstack.']
+};
+
+// 3. Dados Pessoais
+export const profileData = {
+    nome: 'Maria Eduarda Abreu',
+    cargo: {
+        pt: 'Desenvolvedora de Software Fullstack Jr.',
+        en: 'Jr. Fullstack Software Developer',
+        es: 'Desarrolladora de Software Fullstack Jr.',
+        fr: 'Développeuse Logiciel Fullstack Jr.',
+        it: 'Sviluppatrice Software Fullstack Jr.'
+    },
+    descricao: {
+        pt: 'Sou estudante do 3º semestre de Análise e Desenvolvimento de Sistemas na FIAP. Meu foco é criar soluções digitais que unam design, funcionalidades e experiência do usuário.',
+        en: 'I am a 3rd-semester Systems Analysis and Development student at FIAP. My focus is on creating digital solutions that combine design, functionality, and user experience.',
+        es: 'Soy estudiante del 3er semestre de Análisis y Desarrollo de Sistemas en FIAP. Mi enfoque es crear soluciones digitales que unan diseño, funcionalidad y experiencia de usuario.',
+        fr: 'Je suis étudiante en 3ème semestre d\'Analyse et Développement de Systèmes à la FIAP. Je me concentre sur la création de solutions numériques alliant design et fonctionnalité.',
+        it: 'Sono studentessa al 3° semestre di Analisi e Sviluppo Sistemi presso FIAP. Il mio obiettivo è creare soluzioni digitali che uniscano design, funzionalità ed esperienza utente.'
+    }
+};
+
+// 4. Lista de Habilidades (Inalterada - nomes técnicos são universais)
 export const skillsData = [
     { name: 'HTML', icon: 'src/img/icons/html.png' },
     { name: 'CSS', icon: 'src/img/icons/css.png' },
     { name: 'JavaScript', icon: 'src/img/icons/javascript.png' },
     { name: 'Python', icon: 'src/img/icons/python.png' },
     { name: 'Java', icon: 'src/img/icons/java.png' },
-    { name: 'Kotlin', icon: 'src/img/icons/kotiln.png' }, // Mantive o nome do arquivo original (kotiln.png)
+    { name: 'Kotlin', icon: 'src/img/icons/kotiln.png' },
     { name: 'Spring Boot', icon: 'src/img/icons/springboot.png' },
     { name: 'Angular', icon: 'src/img/icons/angular.png' },
     { name: 'Vue.js', icon: 'src/img/icons/vue.png' },
@@ -31,23 +73,28 @@ export const skillsData = [
     { name: 'AWS', icon: 'src/img/icons/aws.png' },
     { name: 'Figma', icon: 'src/img/icons/figma.png' },
     { name: 'InDesign', icon: 'src/img/icons/indesign.png' },
-    { name: 'Illustrator', icon: 'src/img/icons/illustrator.png' }, // Corrigido (antes estava "InDesign")
-    { name: 'Photoshop', icon: 'src/img/icons/photoshop.png' }    // Corrigido (antes estava "InDesign")
+    { name: 'Illustrator', icon: 'src/img/icons/illustrator.png' },
+    { name: 'Photoshop', icon: 'src/img/icons/photoshop.png' }
 ];
 
-// 4. Lista de Projetos
+// 5. Projetos
 export const projectsData = [
     {
         title: 'OrganizeDin - App Gestão Financeira',
-        description: 'Desenvolvimento full-stack de um sistema que auxilia qualquer pessoa na gestão financeira. Utiliza tecnologias como Java, Oracle DB, Spring Boot, JS, HTML e CSS.',
+        description: {
+            pt: 'Desenvolvimento full-stack de um sistema que auxilia na gestão financeira.',
+            en: 'Full-stack development of a financial management system.',
+            es: 'Desarrollo full-stack de un sistema de gestión financiera.',
+            fr: 'Développement full-stack d\'un système de gestion financière.',
+            it: 'Sviluppo full-stack di un sistema di gestione finanziaria.'
+        },
         image: 'src/img/project/projectorganizedin.png',
         codeLink: 'https://github.com/maria-eduarda-abreu/OrganizeDin',
         demoLink: 'https://www.figma.com/design/DJ0IvEIKEQy1O9I23S00Yv/OrganizeDIn?node-id=0-1&t=lK5HzBra0ayEvJne-1' 
     }
-    // Para adicionar mais projetos, basta copiar o bloco acima e colar aqui com vírgula
+    // src/js/data.js (Adicione isso no final do arquivo)
 ];
-
-// 5. Artigos do Blog (Exemplo Inicial)
+// 6. Artigos do Blog (Isso estava faltando!)
 export const articlesData = [
     {
         id: 1,
@@ -55,8 +102,8 @@ export const articlesData = [
         category: "Fundamentos",
         date: "06/02/2026",
         summary: "Um resumo sobre Arrays, Pilhas e Filas e por que a organização da memória importa.",
-        link: "#", // Aqui você colocará o link para o artigo completo no futuro
-        image: null // Opcional
+        link: "#", // Link futuro
+        image: null
     },
     {
         id: 2,

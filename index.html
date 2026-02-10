@@ -26,12 +26,36 @@
                 </button>
 
                 <nav :class="{ active: isMenuOpen }">
-                    <a href="#inicio" class="nav-link" @click="closeMenu">Início</a>
-                    <a href="#sobre" class="nav-link" @click="closeMenu">Sobre</a>
-                    <a href="#habilidades" class="nav-link" @click="closeMenu">Habilidades</a>
-                    <a href="#projetos" class="nav-link" @click="closeMenu">Projetos</a>
-                    <a href="blog.html" class="nav-link">Blog</a>
-                    <a href="#contato" class="nav-link" @click="closeMenu">Contato</a>
+                    <a href="#inicio" class="nav-link" @click="closeMenu">{{ ui.menu_home }}</a>
+                    <a href="#sobre" class="nav-link" @click="closeMenu">{{ ui.menu_about }}</a>
+                    <a href="#habilidades" class="nav-link" @click="closeMenu">{{ ui.menu_skills }}</a>
+                    <a href="#projetos" class="nav-link" @click="closeMenu">{{ ui.menu_projects }}</a>
+                    <a href="blog.html" class="nav-link">{{ ui.menu_blog }}</a>
+                    <a href="#contato" class="nav-link" @click="closeMenu">{{ ui.menu_contact }}</a>
+                    <a href="https://github.com/maria-eduarda-abreu" target="_blank">
+                        <img src="src/img/icons/github2.png" alt="GitHub" class="github-img">
+                    </a>
+                    <a href="https://www.linkedin.com/in/maria-eduarda-abreu" target="_blank">
+                        <img src="src/img/icons/linkedin2.png" alt="Linkedin" class="linkedin-img">
+                    </a>
+
+                    
+                    <div class="lang-container">
+
+                        <button class="lang-btn" @click="toggleLangMenu">
+                            <span class="flag">{{ currentLangObj.flag }}</span>
+                            <span class="code">{{ currentLangObj.label }}</span>
+                            <span class="arrow">▼</span>
+                        </button>
+
+                        <div class="lang-dropdown" v-if="isLangMenuOpen">
+                            <button v-for="lang in availableLanguages" :key="lang.code" class="lang-option"
+                                @click="setLanguage(lang.code)">
+                                <span class="flag">{{ lang.flag }}</span>
+                                <span class="label">{{ lang.label }}</span>
+                            </button>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </header>

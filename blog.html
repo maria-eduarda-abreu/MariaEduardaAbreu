@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="src/img/logoedu3.png"/>
 </head>
 <body>
-    <div id="blog-app" class="portfolio">
+    <div id="app" class="portfolio">
         
         <header class="header">
             <div class="header-content">
@@ -17,61 +17,94 @@
                         <img src="src/img/logo/logoprincipal.png" alt="Logo Marca" class="logo-img">
                     </a>
                 </div>
-                <nav>
-                    <a href="index.html" class="nav-link">Início</a>
-                    <a href="index.html#sobre" class="nav-link">Sobre</a>
-                    <a href="index.html#habilidades" class="nav-link">Habilidades</a>
-                    <a href="index.html#projetos" class="nav-link">Projetos</a>
-                    <a href="blog.html" class="nav-link active" style="color: var(--roxo-magenta);">Blog</a>
-                    
+
+                <button class="mobile-menu-btn" @click="toggleMenu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <nav :class="{ active: isMenuOpen }">
+                    <a href="index.html#inicio" class="nav-link" @click="closeMenu">{{ ui.menu_home }}</a>
+                    <a href="index.html#sobre" class="nav-link" @click="closeMenu">{{ ui.menu_about }}</a>
+                    <a href="index.html#habilidades" class="nav-link" @click="closeMenu">{{ ui.menu_skills }}</a>
+                    <a href="index.html#projetos" class="nav-link" @click="closeMenu">{{ ui.menu_projects }}</a>
+                    <a href="blog.html" class="nav-link active" style="color: var(--roxo-magenta);">{{ ui.menu_blog }}</a>
+                    <a href="index.html#contato" class="nav-link" @click="closeMenu">{{ ui.menu_contact }}</a>
+                    <a href="https://github.com/maria-eduarda-abreu" target="_blank">
+                        <img src="src/img/icons/github2.png" alt="GitHub" class="github-img">
+                    </a>
+                    <a href="https://www.linkedin.com/in/maria-eduarda-abreu" target="_blank">
+                        <img src="src/img/icons/linkedin2.png" alt="Linkedin" class="linkedin-img">
+                    </a>
+
+                    <div class="lang-container">
+                        <button class="lang-btn" @click="toggleLangMenu">
+                            <span class="flag">{{ currentLangObj.flag }}</span>
+                            <span class="code">{{ currentLangObj.label }}</span>
+                            <span class="arrow">▼</span>
+                        </button>
+
+                        <div class="lang-dropdown" v-if="isLangMenuOpen">
+                            <button 
+                                v-for="lang in availableLanguages" 
+                                :key="lang.code" 
+                                class="lang-option" 
+                                @click="setLanguage(lang.code)"
+                            >
+                                <span class="flag">{{ lang.flag }}</span>
+                                <span class="label">{{ lang.label }}</span>
+                            </button>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </header>
 
-        <section class="section" style="padding-top: 120px; text-align: center;">
-            <h1 class="main-title">ARTIGOS</h1>
-            <p class="description">Compartilhando conhecimento sobre meus estudos.</p>
+        <section class="section" style="padding-top: 140px; text-align: center; min-height: 40vh; display: flex; flex-direction: column; justify-content: center;">
+            <h1 class="main-title">{{ ui.menu_blog }} & Estudos</h1>
+            <p class="description">
+                Compartilhando conhecimento sobre Java, Spring, Vue e Arquitetura.
+            </p>
         </section>
 
         <div class="main-content-wrapper">
             <section id="artigos" class="section">
+                
                 <div class="projects-container"> 
-                    
                     <article class="project-card" v-for="post in articles" :key="post.id" style="display: flex; flex-direction: column;">
-                        <img v-if="post.image" :src="post.image" :alt="post.title" style="height: 150px;">
                         
-                        <div class="project-info" style="flex: 1; display: flex; flex-direction: column;">
-                            <small style="color: var(--roxo-claro); margin-bottom: 5px;">{{ post.date }} • {{ post.category }}</small>
-                            <h3>{{ post.title }}</h3>
-                            <p style="flex: 1;">{{ post.summary }}</p>
+                        <img v-if="post.image" :src="post.image" :alt="post.title" style="height: 180px; object-fit: cover;">
+                        
+                        <div class="project-info" style="flex: 1; display: flex; flex-direction: column; padding: 25px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <small style="color: var(--roxo-magenta); font-weight: bold;">{{ post.category }}</small>
+                                <small style="color: #888;">{{ post.date }}</small>
+                            </div>
+                            
+                            <h3 style="margin-bottom: 15px;">{{ post.title }}</h3>
+                            <p style="flex: 1; color: #ccc; margin-bottom: 20px;">{{ post.summary }}</p>
                             
                             <div class="project-links" style="margin-top: auto;">
                                 <a :href="post.link" class="btn-project">Ler Artigo</a>
                             </div>
                         </div>
                     </article>
-
                 </div>
                 
-                <div v-if="articles.length === 0" style="text-align: center; margin-top: 50px;">
+                <div v-if="articles.length === 0" style="text-align: center; margin-top: 50px; color: #888;">
                     <p>Em breve novos conteúdos por aqui! 🚀</p>
                 </div>
 
             </section>
         </div>
+
+        <footer style="text-align: center; padding: 40px; color: #666; font-size: 0.9em;">
+            <p>{{ ui.footer_msg }} &copy; 2026</p>
+        </footer>
+
     </div>
 
-    <script type="module">
-        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
-        // Importando os dados (que criaremos no próximo passo)
-        import { articlesData } from './src/js/data.js';
-
-        createApp({
-            setup() {
-                const articles = ref(articlesData);
-                return { articles };
-            }
-        }).mount('#blog-app');
-    </script>
+    <script type="module" src="src/js/app.js"></script>
 </body>
 </html>

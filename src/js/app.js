@@ -1,105 +1,96 @@
-// src/js/app.js
+// page controller
 
-// Importando Vue via ES Module (necessário para type="module")
-import { createApp, ref, onMounted } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
-
-// Importando nossos dados (O Model)
+import { createApp, ref, computed } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+// ADICIONADO: articlesData na importação
 import { 
     skillsData, 
     projectsData, 
     typingPhrases, 
-    profileData 
+    profileData, 
+    uiLabels, 
+    articlesData 
 } from './data.js';
 
-// Função de Efeito de Digitação (Lógica isolada)
-function useTypingEffect(phrases) {
-    const text = ref('');
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    const typeSpeed = 70;
-    const deleteSpeed = 50;
-    const pauseBeforeDelete = 1500;
-    const pauseBeforeType = 500;
-
-    const type = () => {
-        const currentPhrase = phrases[phraseIndex];
-
-        if (!isDeleting) {
-            text.value = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
-
-            if (charIndex === currentPhrase.length) {
-                isDeleting = true;
-                setTimeout(type, pauseBeforeDelete);
-            } else {
-                setTimeout(type, typeSpeed);
-            }
-        } else {
-            text.value = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
-
-            if (charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(type, pauseBeforeType);
-            } else {
-                setTimeout(type, deleteSpeed);
-            }
-        }
-    };
-
-    onMounted(() => {
-        if (phrases.length > 0) type();
+// Função de Efeito de Digitação
+function useTypingEffect(phrasesByLang, currentLangRef) {
+    const text = computed(() => {
+        return phrasesByLang[currentLangRef.value] ? phrasesByLang[currentLangRef.value][0] : "";
     });
-
     return { text };
 }
 
-// Criação da Aplicação Principal
 const app = createApp({
     setup() {
+        const currentLang = ref('pt');
+        const isLangMenuOpen = ref(false);
+
+        // Configuração de Idiomas
+        const availableLanguages = [
+            { code: 'pt', label: 'PT', flag: '🇧🇷' },
+            { code: 'en', label: 'EN', flag: '🇺🇸' },
+            { code: 'es', label: 'ES', flag: '🇪🇸' },
+            { code: 'fr', label: 'FR', flag: '🇫🇷' },
+            { code: 'it', label: 'IT', flag: '🇮🇹' }
+        ];
+
+        const currentLangObj = computed(() => 
+            availableLanguages.find(l => l.code === currentLang.value)
+        );
+
+        const toggleLangMenu = () => isLangMenuOpen.value = !isLangMenuOpen.value;
+        const setLanguage = (langCode) => {
+            currentLang.value = langCode;
+            isLangMenuOpen.value = false;
+        };
+
         // Dados Reativos
+        const ui = computed(() => uiLabels[currentLang.value]);
         const nome = ref(profileData.nome);
-        const cargo = ref(profileData.cargo);
-        const descricao = ref(profileData.descricao);
+        const cargo = computed(() => profileData.cargo[currentLang.value]);
+        const descricao = computed(() => profileData.descricao[currentLang.value]);
         
-        // Importando as listas do data.js
+        const projects = computed(() => {
+            return projectsData.map(proj => ({
+                ...proj,
+                description: proj.description[currentLang.value]
+            }));
+        });
+
         const skills = ref(skillsData);
-        const projects = ref(projectsData);
+        
+        // ADICIONADO: Artigos agora disponíveis para todas as páginas
+        const articles = ref(articlesData);
 
-        // Inicializando o efeito de digitação
-        const { text: typingText } = useTypingEffect(typingPhrases);
+        const { text: typingText } = useTypingEffect(typingPhrases, currentLang);
 
-        // Lógica do Menu Mobile
+        // Lógica do Menu Mobile (Agora funciona em qualquer página que use este app.js)
         const isMenuOpen = ref(false);
+        const toggleMenu = () => isMenuOpen.value = !isMenuOpen.value;
+        const closeMenu = () => isMenuOpen.value = false;
 
-        const toggleMenu = () => {
-            isMenuOpen.value = !isMenuOpen.value;
-        };
-
-        // Função para fechar o menu ao clicar em um link (opcional, mas recomendado)
-        const closeMenu = () => {
-            isMenuOpen.value = false;
-        };
-
-        // Retorno para o HTML
         return {
-            nome,
-            cargo,
-            descricao,
-            skills,
-            projects,
-            typingText,    // <--- ADICIONEI VÍRGULA AQUI
-            isMenuOpen,    // <--- ADICIONEI VÍRGULA AQUI
-            toggleMenu,    // <--- ADICIONEI VÍRGULA AQUI
-            closeMenu      // <--- ADICIONEI VÍRGULA AQUI
+            currentLang,
+            currentLangObj,
+            availableLanguages,
+            isLangMenuOpen,
+            toggleLangMenu,
+            setLanguage,
+            ui, 
+            nome, 
+            cargo, 
+            descricao, 
+            projects, 
+            skills, 
+            articles, // <--- Importante para o Blog
+            typingText,
+            isMenuOpen, 
+            toggleMenu, 
+            closeMenu
         };
     }
 });
 
-// Verifica se existe o elemento #app antes de montar (evita erro na página de blog)
+// Monta o app no elemento #app (seja no index.html ou blog.html)
 if (document.getElementById('app')) {
     app.mount('#app');
 }
