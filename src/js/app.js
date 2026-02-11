@@ -45,6 +45,7 @@ const app = createApp({
 
         // Dados Reativos
         const ui = computed(() => uiLabels[currentLang.value]);
+        const saudacao = computed(() => profileData.saudacao[currentLang.value]);
         const nome = ref(profileData.nome);
         const cargo = computed(() => profileData.cargo[currentLang.value]);
         const descricao = computed(() => profileData.descricao[currentLang.value]);
@@ -76,10 +77,12 @@ const app = createApp({
             toggleLangMenu,
             setLanguage,
             ui, 
+            saudacao,
             nome, 
             cargo, 
             descricao, 
             projects, 
+            habilidades,
             skills, 
             articles, // <--- Importante para o Blog
             typingText,

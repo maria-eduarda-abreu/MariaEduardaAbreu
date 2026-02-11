@@ -38,7 +38,15 @@ export const typingPhrases = {
 
 // 3. Dados Pessoais
 export const profileData = {
+    
     nome: 'Maria Eduarda Abreu',
+    saudacao: {
+        pt: 'Olá, eu sou a',
+        en: 'Hello, I am',
+        es: 'Hola, soy yo',
+        fr: 'Bonjour, je suis',
+        it: 'Ciao, sono'
+    },
     cargo: {
         pt: 'Desenvolvedora de Software Fullstack Jr.',
         en: 'Jr. Fullstack Software Developer',
@@ -47,16 +55,25 @@ export const profileData = {
         it: 'Sviluppatrice Software Fullstack Jr.'
     },
     descricao: {
-        pt: 'Sou estudante do 3º semestre de Análise e Desenvolvimento de Sistemas na FIAP. Meu foco é criar soluções digitais que unam design, funcionalidades e experiência do usuário.',
-        en: 'I am a 3rd-semester Systems Analysis and Development student at FIAP. My focus is on creating digital solutions that combine design, functionality, and user experience.',
-        es: 'Soy estudiante del 3er semestre de Análisis y Desarrollo de Sistemas en FIAP. Mi enfoque es crear soluciones digitales que unan diseño, funcionalidad y experiencia de usuario.',
-        fr: 'Je suis étudiante en 3ème semestre d\'Analyse et Développement de Systèmes à la FIAP. Je me concentre sur la création de solutions numériques alliant design et fonctionnalité.',
-        it: 'Sono studentessa al 3° semestre di Analisi e Sviluppo Sistemi presso FIAP. Il mio obiettivo è creare soluzioni digitali che uniscano design, funzionalità ed esperienza utente.'
+        pt: 'Meu foco é criar soluções digitais que transformam ideias em realidade.',
+        en: 'My focus is on creating digital solutions that transform ideas into reality.',
+        es: 'Mi enfoque está en crear soluciones digitales que transformen las ideas en realidad.',
+        fr: 'Mon objectif est de créer des solutions numériques qui transforment les idées en réalité.',
+        it: 'Il mio obiettivo è creare soluzioni digitali che trasformino le idee in realtà.'
     }
 };
 
 // 4. Lista de Habilidades (Inalterada - nomes técnicos são universais)
 export const skillsData = [
+    {
+        habilidades: {
+        pt: 'Habilidades',
+        en: 'Skills',
+        es: 'Habilidades',
+        fr: 'Compétences',
+        it: 'Competenze'
+        },
+    },
     { name: 'HTML', icon: 'src/img/icons/html.png' },
     { name: 'CSS', icon: 'src/img/icons/css.png' },
     { name: 'JavaScript', icon: 'src/img/icons/javascript.png' },

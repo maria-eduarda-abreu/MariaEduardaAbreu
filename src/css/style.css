@@ -2,12 +2,42 @@
    1. CONFIGURAÇÕES GERAIS (Variáveis & Reset)
    ========================================= */
 
+/* Fonte (Milker) */
+@font-face {
+    font-family: 'milker';
+    /* Caminho relativo: CSS está em src/, então desce para docs/fonts */
+    src: url('./docs/fonts/milker.otf') format('opentype'); /* OTF usa format opentype */
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'corpta';
+    src: url('./docs/fonts/corpta-regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'poppins';
+    src: url('./docs/fonts/poppins-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'flexing-regular';
+    src: url('./docs/fonts/flexing-regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @font-face {
     font-family: 'flexing-bold';
     src: url('docs/fonts/flexing-bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
+
 
 :root {
     --roxo-magenta: #8A2BE2;
@@ -26,7 +56,7 @@
 body {
     background-color: var(--preto);
     color: var(--branco);
-    font-family: Arial, sans-serif;
+    font-family: 'poppins', Arial, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
     padding-top: 80px; /* Espaço para o header fixo */
@@ -76,7 +106,7 @@ body {
 .logo-img {
     height: 40px;
     /* Margens ajustadas */
-    margin-right: 20px; 
+    margin-right: 40px; 
 }
 .linkedin-img {
     height: 30px;
@@ -234,7 +264,7 @@ nav a.nav-link:hover {
 }
 
 .typing-text-container {
-    font-family: 'flexing-bold', Arial, sans-serif;
+    font-family: 'milker', sans-serif;
     font-size: 4.5em;
     line-height: 1.2;
     color: var(--branco);
@@ -266,7 +296,14 @@ nav a.nav-link:hover {
 }
 
 .hero-content {
-    max-width: 60%;
+    align-items: left;
+}
+
+h1.greeting {
+    font-size: 4em;
+    margin-bottom: 5px;
+    color: var(--branco);
+    font-weight: bold;
 }
 
 .main-title {
@@ -310,16 +347,17 @@ nav a.nav-link:hover {
 
 /* Botão Primário */
 .btn-primary {
-    background-color: var(--roxo-magenta);
+    background: rgba(255, 255, 255, 0.1);
+    border:1px solid var(--roxo-magenta);
     color: var(--branco);
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
     cursor: pointer;
-    font-size: 1em;
+    margin-right: 20px;
+    align-items: center;
+    gap: 8px;
     font-weight: bold;
-    transition: background-color 0.3s;
-    margin-right: 15px;
+    transition: 0.3s;
 }
 
 /* Seções Gerais */
@@ -329,12 +367,7 @@ nav a.nav-link:hover {
     color: var(--branco);
 }
 
-.section h2 {
-    font-size: 2.3em;
-    margin-bottom: 50px;
-    text-align: center;
-    color: var(--roxo-magenta);
-}
+
 
 /* --- Grid de Habilidades --- */
 .habilidades-container {
@@ -539,13 +572,15 @@ nav a.nav-link:hover {
         right: -100%;
         width: 70%;
         height: 100vh;
+        overflow-y:auto;
+        padding-bottom:100px;
         background-color: rgba(19, 7, 39, 0.98);
         backdrop-filter: blur(10px);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        padding: 120px 40px 0 40px;
+        padding: 120px 100px 0 40px;
         gap: 30px;
         transition: 0.4s ease-in-out;
         z-index: 1000;
@@ -559,7 +594,7 @@ nav a.nav-link:hover {
     nav a.nav-link {
         margin: 0;
         font-size: 1.5em;
-        font-weight: bold;
+        font-weight: normal;
     }
 
     /* --- Idioma no Mobile --- */
