@@ -82,7 +82,6 @@ const app = createApp({
             cargo, 
             descricao, 
             projects, 
-            habilidades,
             skills, 
             articles, // <--- Importante para o Blog
             typingText,

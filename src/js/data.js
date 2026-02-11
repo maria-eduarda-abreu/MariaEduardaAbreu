@@ -39,7 +39,7 @@ export const typingPhrases = {
 // 3. Dados Pessoais
 export const profileData = {
     
-    nome: 'Maria Eduarda Abreu',
+    nome: 'Maria eduarda abreu',
     saudacao: {
         pt: 'Olá, eu sou a',
         en: 'Hello, I am',
@@ -65,6 +65,7 @@ export const profileData = {
 
 // 4. Lista de Habilidades (Inalterada - nomes técnicos são universais)
 export const skillsData = [
+    /*
     {
         habilidades: {
         pt: 'Habilidades',
@@ -74,6 +75,7 @@ export const skillsData = [
         it: 'Competenze'
         },
     },
+*/
     { name: 'HTML', icon: 'src/img/icons/html.png' },
     { name: 'CSS', icon: 'src/img/icons/css.png' },
     { name: 'JavaScript', icon: 'src/img/icons/javascript.png' },

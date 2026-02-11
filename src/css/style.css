@@ -1,41 +1,34 @@
 /* =========================================
-   1. CONFIGURAÇÕES GERAIS (Variáveis & Reset)
-   ========================================= */
+1. CONFIGURAÇÕES GERAIS (Variáveis & Reset)
+========================================= */
 
-/* Fonte (Milker) */
+/* Fonte web (Milker) */
 @font-face {
-    font-family: 'milker';
-    /* Caminho relativo: CSS está em src/, então desce para docs/fonts */
-    src: url('./docs/fonts/milker.otf') format('opentype'); /* OTF usa format opentype */
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'corpta';
-    src: url('./docs/fonts/corpta-regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: "milker";
+    src: url("./fonts/milker.otf")format("opentype");
+    
 }
 
 @font-face {
-    font-family: 'poppins';
-    src: url('./docs/fonts/poppins-regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: "PoppinsRegular";
+    src: url("./fonts/poppinsregular.ttf")format("truetype");
 }
 
 @font-face {
-    font-family: 'flexing-regular';
-    src: url('./docs/fonts/flexing-regular.otf') format('opentype');
+    font-family: "corpta";
+    src: url("./fonts/corpta-regular.otf")format("opentype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'flexing-bold';
-    src: url('docs/fonts/flexing-bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
+    font-family: "flexingRegular";
+    src: url("./fonts/flexingRegular.ttf")format("truetype");
+}
+
+@font-face {
+    font-family: "flexingBold";
+    src: url("./fonts/flexingBold.ttf")format("truetype");
 }
 
 
@@ -56,7 +49,7 @@
 body {
     background-color: var(--preto);
     color: var(--branco);
-    font-family: 'poppins', Arial, sans-serif;
+    font-family: "PoppinsRegular", sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
     padding-top: 80px; /* Espaço para o header fixo */
@@ -264,7 +257,7 @@ nav a.nav-link:hover {
 }
 
 .typing-text-container {
-    font-family: 'milker', sans-serif;
+    font-family: "Milker", sans-serif;
     font-size: 4.5em;
     line-height: 1.2;
     color: var(--branco);
@@ -300,17 +293,24 @@ nav a.nav-link:hover {
 }
 
 h1.greeting {
-    font-size: 4em;
-    margin-bottom: 5px;
+    font-family: "flexingRegular", sans-serif;
+    font-size: 10px;
     color: var(--branco);
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .main-title {
-    font-size: 3em;
-    margin-bottom: 10px;
-    color: var(--branco);
+    font-family: "flexingBold", sans-serif;
+    font-size: 5em;
     font-weight: bold;
+    /* 1. Define as cores do gradiente (da esquerda para direita) */
+    background: linear-gradient(to bottom, #340064 1%, #ffffff 98%);
+    -webkit-background-clip: text;/* 2. Faz o fundo aparecer apenas no formato das letras */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* 3. Deixa a letra transparente para o fundo aparecer */
+    color: transparent; 
+    
 }
 
 .subtitle {
@@ -318,11 +318,24 @@ h1.greeting {
     color: var(--roxo-magenta);
     margin-bottom: 20px;
     font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* add linha roxa antes do cargo */
+.subtitle::before {
+    content: "";            /* Obrigatório para o elemento aparecer */
+    display: block;
+    width: 60px;            /* Comprimento da linha */
+    height: 3px;            /* Espessura da linha */
+    background-color: var(--roxo-magenta);
+    border-radius: 2px;     /* Deixa as pontas da linha arredondadas */
 }
 
 .description {
     font-size: 1.1em;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-weight: normal;
 }
 
@@ -358,6 +371,20 @@ h1.greeting {
     gap: 8px;
     font-weight: bold;
     transition: 0.3s;
+}
+.btn-primary:hover {
+    /* Mudança de Cor */
+    background-color: #5802a8; 
+    color: #ffffff;
+    
+    /* Efeito de Crescer um pouco */
+    transform: scale(1.05);
+    
+    /* Sombra brilhante */
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+    
+    /* Borda muda de cor também */
+    border-color: transparent;
 }
 
 /* Seções Gerais */

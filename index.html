@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Maria Eduarda Abreu</title>
+    <title>Portfólio - maria eduarda abreu</title>
     <link rel="stylesheet" href="src/css/style.css">
-    <link rel="icon" type="image/png" href="src/img/logoedu3.png" />
+    <link rel="icon" type="image/png" href="src/img/logo/logoicon.png" />
 
 </head>
 
@@ -16,7 +16,7 @@
         <header class="header">
             <div class="header-content">
                 <div class="logo">
-                    <img src="src/img/logo/logoprincipal.png" alt="Logo Marca" class="logo-img">
+                    <img src="src/img/logo/logomariaeduarda.png" alt="Logo Marca" class="logo-img">
                 </div>
 
                 <button class="mobile-menu-btn" @click="toggleMenu">
@@ -70,7 +70,7 @@
 
             <section id="sobre" class="section hero-resumo">
                 <div class="hero-content">
-                    <h1 class="greeting">{{ saudacao }}</h1>
+                    <h2 class="greeting">{{ saudacao }}</h2>
                     <h2 class="main-title"> {{ nome }}!</h2>
                     <h3 class="subtitle">{{ cargo }}</h3>
                     <p class="description">{{ descricao }}</p>
@@ -88,7 +88,7 @@
             </section>
 
             <section id="habilidades" class="section">
-                <h2>`{{habilidades}}</h2>
+                <h2>habilidades</h2>
                 <div class="habilidades-container">
                     <div class="habilidade-item" v-for="skill in skills" :key="skill.name">
                         <img :src="skill.icon" :alt="'Ícone ' + skill.name">
