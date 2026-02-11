@@ -58,6 +58,18 @@ const app = createApp({
         });
 
         const skills = ref(skillsData);
+
+        const habilidades = computed(() => {
+            return profileData.habilidades[currentLang.value];
+        });
+
+        const projetos = computed(() => {
+            return profileData.projetos[currentLang.value];
+        });
+
+        const contact = computed(() => {
+            return profileData.contact[currentLang.value];
+        });
         
         // ADICIONADO: Artigos agora disponíveis para todas as páginas
         const articles = ref(articlesData);
@@ -81,7 +93,10 @@ const app = createApp({
             nome, 
             cargo, 
             descricao, 
-            projects, 
+            habilidades,
+            projetos, 
+            projects,
+            contact,
             skills, 
             articles, // <--- Importante para o Blog
             typingText,

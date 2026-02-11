@@ -60,22 +60,35 @@ export const profileData = {
         es: 'Mi enfoque está en crear soluciones digitales que transformen las ideas en realidad.',
         fr: 'Mon objectif est de créer des solutions numériques qui transforment les idées en réalité.',
         it: 'Il mio obiettivo è creare soluzioni digitali che trasformino le idee in realtà.'
-    }
-};
-
-// 4. Lista de Habilidades (Inalterada - nomes técnicos são universais)
-export const skillsData = [
-    /*
-    {
-        habilidades: {
+    },
+    habilidades: {
         pt: 'Habilidades',
         en: 'Skills',
         es: 'Habilidades',
         fr: 'Compétences',
         it: 'Competenze'
-        },
     },
-*/
+    projetos: {
+        pt: 'Projetos',
+        en: 'Projects',
+        es: 'proyectos',
+        fr: 'Projets',
+        it: 'Progetti'
+    },
+    contact: {
+        pt: 'Entre em Contato',
+        en: 'Contact me',
+        es: 'Ponte en contacto',
+        fr: 'Entrer en contact',
+        it: 'Entre em Contato'
+    }
+};
+
+// 4. Lista de Habilidades (Inalterada - nomes técnicos são universais)
+export const skillsData = [
+    
+
+
     { name: 'HTML', icon: 'src/img/icons/html.png' },
     { name: 'CSS', icon: 'src/img/icons/css.png' },
     { name: 'JavaScript', icon: 'src/img/icons/javascript.png' },

@@ -97,10 +97,11 @@ body {
     align-items: center;
 }
 .logo-img {
-    height: 40px;
+    height: 35px;
     /* Margens ajustadas */
     margin-right: 40px; 
 }
+
 .linkedin-img {
     height: 30px;
     display: inline-block;
@@ -396,7 +397,23 @@ h1.greeting {
 
 
 
-/* --- Grid de Habilidades --- */
+/* =========================================
+  grind HABILIDADES
+   ========================================= */
+.habilidades {
+    font-family: "flexingBold", sans-serif;
+    font-size: 3.5em;
+    font-weight: bold;
+    /* 1. Define as cores do gradiente (da esquerda para direita) */
+    background: linear-gradient(to bottom, #340064 1%, #ffffff 98%);
+    -webkit-background-clip: text;/* 2. Faz o fundo aparecer apenas no formato das letras */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* 3. Deixa a letra transparente para o fundo aparecer */
+    color: transparent; 
+    text-align: center;
+    margin-bottom: 60px;
+}
+
 .habilidades-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -438,7 +455,23 @@ h1.greeting {
     font-weight: 500;
 }
 
-/* --- Cards de Projetos --- */
+/* =========================================
+   CARD PROJETCS
+   ========================================= */
+.projetos {
+    font-family: "flexingBold", sans-serif;
+    font-size: 3.5em;
+    font-weight: bold;
+    /* 1. Define as cores do gradiente (da esquerda para direita) */
+    background: linear-gradient(to bottom, #340064 1%, #ffffff 98%);
+    -webkit-background-clip: text;/* 2. Faz o fundo aparecer apenas no formato das letras */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* 3. Deixa a letra transparente para o fundo aparecer */
+    color: transparent; 
+    text-align: center;
+    margin-bottom: 60px;
+}
+
 .projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -500,6 +533,19 @@ h1.greeting {
    6. FORMULÁRIO & CONTATO
    ========================================= */
 
+.contact {
+    font-family: "flexingBold", sans-serif;
+    font-size: 3.5em;
+    font-weight: bold;
+    /* 1. Define as cores do gradiente (da esquerda para direita) */
+    background: linear-gradient(to bottom, #340064 1%, #ffffff 98%);
+    -webkit-background-clip: text;/* 2. Faz o fundo aparecer apenas no formato das letras */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* 3. Deixa a letra transparente para o fundo aparecer */
+    color: transparent; 
+    text-align: center;
+    margin-bottom: 20px;
+}
 .contact-message {
     text-align: center;
     max-width: 600px;
@@ -576,19 +622,38 @@ h1.greeting {
 
     /* --- Ajuste Header Mobile --- */
     .header {
-        flex-direction: column;
-        padding-top: 15px;
+        /* Remove o flex-direction: column se quiser o logo alinhado com o botão */
+        /* flex-direction: column; <--- REMOVER ou COMENTAR isso se quiser lado a lado */
+        padding: 15px 20px; /* Ajuste o padding lateral */
+        height: 80px; /* Define uma altura fixa para evitar pulos */
+        align-items: center; /* Centraliza verticalmente */
     }
 
     .header-content {
-        flex-direction: column;
-        text-align: center;
+        /* Garante que o conteúdo ocupe a largura e alinhe os itens */
+        flex-direction: row; /* Mantém logo e botão na mesma linha */
+        justify-content: space-between; /* Logo na esquerda, botão na direita */
+        width: 100%;
+        padding: 0;
+    }
+
+    /* --- Ajuste Específico da Logo --- */
+    .logo {
+        /* Se precisar mover a logo um pouco, use margin ou transform */
+        margin-left: 0; /* Garante que está colada na esquerda */
+        z-index: 1002; /* Garante que fique acima de tudo se necessário */
+    }
+
+    .logo-img {
+        /* Reduz um pouco o tamanho no mobile se necessário */
+        height: 30px; 
+        margin-right: 0; /* Remove a margem direita grande do desktop */
     }
 
     /* --- Menu Gaveta (Drawer) --- */
     .mobile-menu-btn {
         display: flex;
-        position: absolute;
+        position: static;
         top: 32px;
         right: 20px;
     }
