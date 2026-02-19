@@ -117,13 +117,13 @@
 
             <section id="contato" class="section">
                 <h1 class="contact">{{contact}}</h1>
-                <p class="contact-message">Mande uma mensagem e vamos tirar seu projeto do papel!</p>
+                
 
-                <form class="contact-form" action="#" method="POST">
-                    <input type="text" name="name" placeholder="Seu Nome" required>
-                    <input type="email" name="email" placeholder="Seu Melhor E-mail" required>
-                    <textarea name="message" rows="5" placeholder="Sua Mensagem..." required></textarea>
-                    <button type="submit" class="btn-primary">Enviar Mensagem</button>
+                <form class="contact-form" action="https://formspree.io/f/xlgwlyno" method="POST">
+                    <input type="text" name="name" placeholder= Name required>
+                    <input type="email" name="email" placeholder= E-mail required>
+                    <textarea name="message" rows="5" placeholder= Mensage required></textarea>
+                    <button type="submit" class="btn-primary">{{enviarMensagem}}</button>
                 </form>
 
                 <div class="social-links">

@@ -81,6 +81,13 @@ export const profileData = {
         es: 'Ponte en contacto',
         fr: 'Entrer en contact',
         it: 'Entre em Contato'
+    },
+    enviarMensagem: {
+        pt: 'Enviar Mensagem',
+        en: 'Send Message', 
+        es: 'Enviar Mensaje',
+        fr: 'Envoyer Message',
+        it: 'Invia Messaggio'
     }
 };
 
@@ -126,6 +133,8 @@ export const projectsData = [
     }
     // src/js/data.js (Adicione isso no final do arquivo)
 ];
+
+
 // 6. Artigos do Blog (Isso estava faltando!)
 export const articlesData = [
     {

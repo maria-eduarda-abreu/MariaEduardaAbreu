@@ -553,12 +553,21 @@ h1.greeting {
     font-size: 1.1em;
 }
 
+/* Container do formulário */
 .contact-form {
     max-width: 600px;
     margin: 0 auto 40px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+/* O Botão de Enviar */
+.contact-form .btn-primary {
+    width: 100%;
+    max-width: 250px; /* Largura máxima do botão */
+    margin: 20px auto 0; /* O 'auto' nas laterais é o que centraliza o botão */
+    align-self: center; /* Reforça a centralização no Flexbox */
 }
 
 .contact-form input,
@@ -720,17 +729,16 @@ h1.greeting {
 
     /* --- Ajustes de Seção --- */
     .typing-text-container {
-        font-size: 3em;
+        font-size: 2.5em;
         white-space: normal;
     }
 
     .hero-resumo {
         flex-direction: column-reverse;
-        text-align: center;
+        text-align: left;
         padding: 50px 0;
     }
 
-    .hero-content, 
     .hero-image {
         max-width: 100%;
     }
@@ -741,14 +749,22 @@ h1.greeting {
     }
 
     .main-title {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     .subtitle {
-        font-size: 1.5em;
+        font-size: 0.8em;
+    }
+
+    .subtitle::before {
+        width: 20px;
+        height: 2px;
     }
 
     .section {
         padding: 50px 0;
+    }
+    .contact{
+        font-size: 2.5em;
     }
 }

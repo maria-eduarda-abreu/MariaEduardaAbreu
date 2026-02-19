@@ -70,7 +70,12 @@ const app = createApp({
         const contact = computed(() => {
             return profileData.contact[currentLang.value];
         });
-        
+
+        const enviarMensagem = computed(() => {
+            return profileData.enviarMensagem[currentLang.value];
+        });
+
+       
         // ADICIONADO: Artigos agora disponíveis para todas as páginas
         const articles = ref(articlesData);
 
@@ -97,6 +102,7 @@ const app = createApp({
             projetos, 
             projects,
             contact,
+            enviarMensagem,
             skills, 
             articles, // <--- Importante para o Blog
             typingText,
